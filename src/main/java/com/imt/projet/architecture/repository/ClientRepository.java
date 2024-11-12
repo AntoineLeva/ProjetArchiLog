@@ -1,6 +1,6 @@
-package repository;
+package com.imt.projet.architecture.repository;
 
-import model.Client;
+import com.imt.projet.architecture.model.Client;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 
@@ -11,3 +11,6 @@ public interface ClientRepository extends MongoRepository<Client, UUID> {
     // MongoRepository fournit des méthodes CRUD basiques pour MongoDB,
     // vous pouvez ajouter des méthodes personnalisées ici si nécessaire
 }
+
+
+

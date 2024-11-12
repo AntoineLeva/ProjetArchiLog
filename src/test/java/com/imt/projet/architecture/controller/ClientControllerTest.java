@@ -1,14 +1,14 @@
-package ControllerTest;
+package com.imt.projet.architecture.controller;
 
-import controller.ClientController;
-import dto.ClientDTO;
+import com.imt.projet.architecture.controller.ClientController;
+import com.imt.projet.architecture.dto.ClientDTO;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import service.ClientService;
-import service.ContratService;
+import com.imt.projet.architecture.service.ClientService;
+import com.imt.projet.architecture.service.ContratService;
 
 import java.util.List;
 import java.util.UUID;

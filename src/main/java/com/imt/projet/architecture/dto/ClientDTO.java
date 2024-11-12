@@ -1,6 +1,6 @@
-package dto;
+package com.imt.projet.architecture.dto;
 
-import model.Client;
+import com.imt.projet.architecture.model.Client;
 import java.util.UUID;
 
 public class ClientDTO {

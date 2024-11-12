@@ -1,11 +1,10 @@
-package controller;
+package com.imt.projet.architecture.controller;
 
-import dto.ClientDTO;
-import model.Client;
+import com.imt.projet.architecture.dto.ClientDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import service.ClientService;
-import service.ContratService;
+import com.imt.projet.architecture.service.ClientService;
+import com.imt.projet.architecture.service.ContratService;
 
 import java.util.List;
 import java.util.UUID;
@@ -41,3 +40,4 @@ public class ClientController {
         //contratService.deleteClientContrats(id); // Supprimer aussi les contrats liés
     }
 }
+

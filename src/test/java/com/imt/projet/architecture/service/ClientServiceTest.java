@@ -1,14 +1,13 @@
-package ServiceTest;
+package com.imt.projet.architecture.service;
 
-import dto.ClientDTO;
-import model.Client;
+import com.imt.projet.architecture.dto.ClientDTO;
+import com.imt.projet.architecture.model.Client;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import repository.ClientRepository;
-import service.ClientService;
+import com.imt.projet.architecture.repository.ClientRepository;
 
 import java.util.List;
 import java.util.Optional;

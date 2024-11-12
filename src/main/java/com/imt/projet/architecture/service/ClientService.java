@@ -1,8 +1,8 @@
-package service;
+package com.imt.projet.architecture.service;
 
-import dto.ClientDTO;
-import model.Client;
-import repository.ClientRepository;
+import com.imt.projet.architecture.dto.ClientDTO;
+import com.imt.projet.architecture.model.Client;
+import com.imt.projet.architecture.repository.ClientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

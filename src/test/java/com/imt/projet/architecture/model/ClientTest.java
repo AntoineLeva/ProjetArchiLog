@@ -1,6 +1,5 @@
-package modeleTest;
+package com.imt.projet.architecture.model;
 
-import model.Client;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 

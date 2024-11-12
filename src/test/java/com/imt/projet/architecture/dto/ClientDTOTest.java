@@ -1,7 +1,6 @@
-package DTOTest;
+package com.imt.projet.architecture.dto;
 
-import dto.ClientDTO;
-import model.Client;
+import com.imt.projet.architecture.model.Client;
 import org.junit.jupiter.api.Test;
 
 import java.util.UUID;
