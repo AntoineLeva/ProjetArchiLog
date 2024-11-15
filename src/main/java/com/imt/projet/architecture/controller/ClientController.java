@@ -1,10 +1,10 @@
+
 package com.imt.projet.architecture.controller;
 
 import com.imt.projet.architecture.dto.ClientDTO;
+import com.imt.projet.architecture.service.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import com.imt.projet.architecture.service.ClientService;
-import com.imt.projet.architecture.service.ContratService;
 
 import java.util.List;
 import java.util.UUID;
@@ -15,9 +15,6 @@ public class ClientController {
 
     @Autowired
     private ClientService clientService;
-
-    @Autowired
-    private ContratService contratService;
 
     @GetMapping
     public List<ClientDTO> getAllClients() {
@@ -34,10 +31,13 @@ public class ClientController {
         return clientService.createClient(clientDTO);
     }
 
+    @PutMapping("/{clientId}/retirer-conseiller")
+    public void retirerConseiller(@PathVariable UUID clientId) {
+        clientService.retirerConseiller(clientId);
+    }
+
     @DeleteMapping("/{id}")
     public void deleteClient(@PathVariable UUID id) {
         clientService.deleteClient(id);
-        //contratService.deleteClientContrats(id); // Supprimer aussi les contrats liés
     }
 }
-

@@ -8,6 +8,8 @@ public class ClientDTO {
     private UUID id;
     private String nom;
     private String email;
+    private UUID conseillerId; // Ajout de l'ID du conseiller
+    private String nomConseiller; // Ajout du nom du conseiller
 
     public UUID getId() {
         return id;
@@ -33,8 +35,24 @@ public class ClientDTO {
         this.email = email;
     }
 
+    public UUID getConseillerId() {
+        return conseillerId;
+    }
+
+    public void setConseillerId(UUID conseillerId) {
+        this.conseillerId = conseillerId;
+    }
+
+    public String getNomConseiller() {
+        return nomConseiller;
+    }
+
+    public void setNomConseiller(String nomConseiller) {
+        this.nomConseiller = nomConseiller;
+    }
+
     // Méthode de conversion d'un Client en ClientDTO
-    public static ClientDTO fromEntity(Client client) {
+    public static ClientDTO fromEntity(Client client, String nomConseiller) {
         if (client == null) {
             return null;
         }
@@ -42,6 +60,8 @@ public class ClientDTO {
         clientDTO.setId(client.getId());
         clientDTO.setNom(client.getNom());
         clientDTO.setEmail(client.getEmail());
+        clientDTO.setConseillerId(client.getConseillerId());
+        clientDTO.setNomConseiller(nomConseiller);
         return clientDTO;
     }
 
@@ -51,6 +71,7 @@ public class ClientDTO {
         client.setId(this.id);
         client.setNom(this.nom);
         client.setEmail(this.email);
+        client.setConseillerId(this.conseillerId);
         return client;
     }
 }
