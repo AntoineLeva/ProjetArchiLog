@@ -33,7 +33,7 @@ public class ClientController {
 
     @PutMapping("/{clientId}/retirer-conseiller")
     public void retirerConseiller(@PathVariable UUID clientId) {
-        clientService.retirerConseiller(clientId);
+        clientService.retirerConseillerEtReassigner(clientId);
     }
 
     @DeleteMapping("/{id}")

@@ -44,6 +44,6 @@ public class ConseillerService {
                 .orElseThrow(() -> new IllegalArgumentException("Conseiller introuvable"));
         conseiller.retirerClient(clientId);
         conseillerRepository.save(conseiller);
-        clientService.retirerConseiller(clientId);
+        //clientService.retirerConseiller(clientId);
     }
 }
