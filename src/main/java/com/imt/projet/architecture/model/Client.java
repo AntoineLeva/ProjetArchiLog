@@ -1,4 +1,3 @@
-
 package com.imt.projet.architecture.model;
 
 import org.springframework.data.annotation.Id;
@@ -7,60 +6,29 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import java.util.UUID;
 
 @Document(collection = "clients")
-public class Client implements CompteComponent {
+public class Client extends CompteUsers {
 
-    @Id
-    private UUID id;
-    private String nom;
-    private String email;
-    private UUID conseillerId;
+    private UUID conseillerId; // Identifiant du conseiller associé
 
+    // Constructeur avec paramètres
     public Client(String nom, String email, UUID conseillerId) {
-        this.id = UUID.randomUUID();
-        this.nom = nom;
-        this.email = email;
-        this.conseillerId = conseillerId;
+        super(); // Appelle le constructeur de la classe mère pour initialiser `id`
+        this.setNom(nom); // Défini `nom` via la méthode héritée de CompteUsers
+        this.setEmail(email); // Défini `email` via la méthode héritée de CompteUsers
+        this.conseillerId = conseillerId; // Défini le conseiller
     }
 
-    public Client() {}
-
-    @Override
-    public UUID getId() {
-        return id;
+    // Constructeur par défaut
+    public Client() {
+        super(); // Appelle le constructeur de la classe mère
     }
 
-    public void setId(UUID id) {
-        this.id = id;
-    }
-
-    @Override
-    public String getNom() {
-        return nom;
-    }
-
-    public void setNom(String nom) {
-        this.nom = nom;
-    }
-
-    @Override
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
+    // Getter et Setter pour `conseillerId`
     public UUID getConseillerId() {
         return conseillerId;
     }
 
     public void setConseillerId(UUID conseillerId) {
         this.conseillerId = conseillerId;
-    }
-
-    @Override
-    public void afficherDetails() {
-        System.out.println("Client: " + nom + " (Email: " + email + ")");
     }
 }
