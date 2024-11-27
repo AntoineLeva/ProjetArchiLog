@@ -11,6 +11,7 @@ import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Random;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
@@ -55,6 +56,44 @@ public class ClientService {
         client.setId(UUID.randomUUID());
         return ClientDTO.fromEntity(clientRepository.save(client), null);
     }
+
+    public ClientDTO creerClientAuto() {
+        // Générer aléatoirement le nom, prénom et email
+        String[] noms = {"Dupont", "Martin", "Durand", "Bernard", "Thomas", "Leva", "Lafraise", "Mouloud", "Simpson", "Scofield", "Shark","Desmares","Monkey D", "Hack"};
+        String[] prenoms = {"Jean", "Marie", "Paul", "Luc", "Emma", "Tristan", "Mario", "Talon", "Nutella", "Monique", "Veronique", "Michael", "Manu", "XxHackerxX"};
+        Random random = new Random();
+
+        String nom = noms[random.nextInt(noms.length)];
+        String prenom = prenoms[random.nextInt(prenoms.length)];
+        String nomComplet = nom + " " + prenom;
+        String email = prenom.toLowerCase() + "." + nom.toLowerCase() + "@gmail.com";
+
+        // Créer un nouvel objet Client avec un UUID
+        Client client = new Client();
+        client.setId(UUID.randomUUID());
+        client.setNom(nomComplet);
+        client.setEmail(email);
+
+        // Sauvegarder le client dans la base
+        client = clientRepository.save(client);
+        ClientDTO clientDTO = ClientDTO.fromEntity(client, null);
+
+        // Publier un événement pour assigner un conseiller
+        eventPublisher.publishEvent(new ClientConseillerAssignedEvent(client.getId()));
+
+
+        System.out.println("Client auto-créé : " + clientDTO);
+
+        return clientDTO;
+    }
+
+
+
+
+
+
+
+
 
     // Supprimer le conseiller du client, publier deux événements pour gérer la suppression et la réaffectation
     public void retirerConseillerEtReassigner(UUID clientId) {

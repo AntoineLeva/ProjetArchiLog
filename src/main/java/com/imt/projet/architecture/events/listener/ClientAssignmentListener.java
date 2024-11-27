@@ -1,5 +1,6 @@
 package com.imt.projet.architecture.events.listener;
 
+import com.imt.projet.architecture.events.ClientAddedToConseillerEvent;
 import com.imt.projet.architecture.events.ClientConseillerAssignedEvent;
 import com.imt.projet.architecture.model.Client;
 import com.imt.projet.architecture.model.Conseiller;
@@ -24,6 +25,8 @@ public class ClientAssignmentListener {
         this.conseillerRepository = conseillerRepository;
     }
 
+
+    //REMPLACER un conseiller d'un client
     @EventListener
     public void handleClientConseillerAssignedEvent(ClientConseillerAssignedEvent event) {
         UUID clientId = event.getClientId();
@@ -59,5 +62,10 @@ public class ClientAssignmentListener {
             System.err.println("Client avec l'ID " + clientId + " introuvable.");
         }
     }
+
+//---------------------------------------
+
+
+
 }
 

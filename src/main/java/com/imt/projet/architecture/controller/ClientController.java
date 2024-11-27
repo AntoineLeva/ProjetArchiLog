@@ -40,4 +40,9 @@ public class ClientController {
     public void deleteClient(@PathVariable UUID id) {
         clientService.deleteClient(id);
     }
+
+    @PostMapping("/creer-auto")
+    public ClientDTO creerClientAuto() {
+        return clientService.creerClientAuto();
+    }
 }
