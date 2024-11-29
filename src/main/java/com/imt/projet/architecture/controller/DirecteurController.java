@@ -30,11 +30,13 @@ public class DirecteurController {
     public void ajouterConseiller(@PathVariable UUID directeurId, @RequestBody ConseillerDTO conseillerDTO) {
         directeurService.ajouterConseiller(directeurId, conseillerDTO);
     }
-
-    @DeleteMapping("/{directeurId}/retirer-conseiller/{conseillerId}")
-    public void retirerConseiller(@PathVariable UUID directeurId, @PathVariable UUID conseillerId) {
-        directeurService.retirerConseiller(directeurId, conseillerId);
+    @PostMapping("/{directeurId}/ajouter-conseillers") public void ajouterConseillers(@PathVariable UUID directeurId, @RequestBody List<ConseillerDTO> conseillersDTO) {
+        directeurService.ajouterConseillers(directeurId, conseillersDTO);
     }
+
+
+    @DeleteMapping("/{directeurId}/retirer-conseiller/{conseillerId}") public void retirerConseiller(@PathVariable UUID directeurId, @PathVariable UUID conseillerId) {
+        directeurService.retirerConseiller(directeurId, conseillerId); }
 
     @GetMapping("/{directeurId}/conseillers")
     public List<ConseillerDTO> getConseillers(@PathVariable UUID directeurId) {

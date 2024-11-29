@@ -42,6 +42,16 @@ public class DirecteurService {
         directeurRepository.save(directeur);
     }
 
+    public void ajouterConseillers(UUID directeurId, List<ConseillerDTO> conseillersDTO) {
+        Directeur directeur = directeurRepository.findById(directeurId)
+                .orElseThrow(() -> new IllegalArgumentException("Directeur introuvable"));
+
+        List<Conseiller> conseillers = conseillersDTO.stream() .map(ConseillerDTO::toEntity)
+                .collect(Collectors.toList());
+        // Sauvegarde chaque conseiller et assigne les ID générés
+        List<Conseiller> savedConseillers = conseillerRepository.saveAll(conseillers);
+        directeur.getConseillers().addAll(savedConseillers); directeurRepository.save(directeur); }
+
     public void retirerConseiller(UUID directeurId, UUID conseillerId) {
         Directeur directeur = directeurRepository.findById(directeurId)
                 .orElseThrow(() -> new IllegalArgumentException("Directeur introuvable"));
