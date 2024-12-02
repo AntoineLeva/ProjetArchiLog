@@ -35,4 +35,10 @@ public class ConseillerController {
     public void retirerClient(@PathVariable UUID conseillerId, @PathVariable UUID clientId) {
         conseillerService.retirerClient(conseillerId, clientId);
     }
+
+    @PostMapping("/creer-auto")
+    public ConseillerDTO creerConseillerAuto() {
+        return conseillerService.creerConseillerAuto();
+    }
+
 }

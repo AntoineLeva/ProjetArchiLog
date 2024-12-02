@@ -90,11 +90,6 @@ public class ClientService {
 
 
 
-
-
-
-
-
     // Supprimer le conseiller du client, publier deux événements pour gérer la suppression et la réaffectation
     public void retirerConseillerEtReassigner(UUID clientId) {
         // Étape 1 : Récupérer le client
