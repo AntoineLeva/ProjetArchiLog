@@ -1,14 +1,33 @@
 package com.imt.projet.architecture.model;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+@Document(collection = "directeurs")
 public class Directeur {
+    @Id
     private UUID id;
     private String nom;
     private String tel;
     private List<Conseiller> conseillers;
 
+    public Directeur() {
+        this.id = UUID.randomUUID();
+        this.conseillers = new ArrayList<>();
+    }
+
+    public Directeur(UUID id, String nom, String tel, List<Conseiller> conseillers) {
+        this.id = id != null ? id : UUID.randomUUID();
+        this.nom = nom;
+        this.tel = tel;
+        this.conseillers = conseillers != null ? conseillers : new ArrayList<>();
+    }
+
+    // Getters et Setters
     public UUID getId() {
         return id;
     }

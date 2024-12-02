@@ -63,13 +63,16 @@ public class DirecteurDTO {
 
     public Directeur toEntity() {
         Directeur directeur = new Directeur();
-        directeur.setId(this.id);
+        directeur.setId(this.id != null ? this.id : UUID.randomUUID());
         directeur.setNom(this.nom);
         directeur.setTel(this.tel);
-        List<Conseiller> conseillers = this.conseillers.stream()
-                .map(ConseillerDTO::toEntity)
-                .collect(Collectors.toList());
-        directeur.setConseillers(conseillers);
+        if (this.conseillers != null) {
+            directeur.setConseillers(
+                    this.conseillers.stream()
+                            .map(ConseillerDTO::toEntity)
+                            .collect(Collectors.toList())
+            );
+        }
         return directeur;
     }
 }

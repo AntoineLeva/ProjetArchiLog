@@ -35,8 +35,10 @@ public class DirecteurController {
     }
 
 
-    @DeleteMapping("/{directeurId}/retirer-conseiller/{conseillerId}") public void retirerConseiller(@PathVariable UUID directeurId, @PathVariable UUID conseillerId) {
-        directeurService.retirerConseiller(directeurId, conseillerId); }
+    @DeleteMapping("/{directeurId}/retirer-conseiller/{conseillerId}")
+    public void retirerConseiller(@PathVariable UUID directeurId, @PathVariable UUID conseillerId) {
+        directeurService.retirerConseiller(directeurId, conseillerId);
+    }
 
     @GetMapping("/{directeurId}/conseillers")
     public List<ConseillerDTO> getConseillers(@PathVariable UUID directeurId) {
